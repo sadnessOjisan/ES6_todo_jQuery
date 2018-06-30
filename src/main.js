@@ -1,3 +1,1 @@
-$(document).ready(function(){
-    alert(33)
-  });
+console.log('hello')

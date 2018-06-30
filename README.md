@@ -20,3 +20,6 @@ $ node -v
 v10.5.0
 
 ```
+
+## 注意
+index.htmlにbuild.jsを書いてなくても勝手にinjectionしてくれる. 
