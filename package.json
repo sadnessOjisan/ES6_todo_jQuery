@@ -7,12 +7,12 @@
     "start": "webpack-dev-server --open",
     "build": "webpack",
     "prettier": "prettier ./src/**.js",
-    "lint": "eslint src/**.js --fix", 
+    "lint": "eslint src/**.js --fix --write",
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "*.{js}": [
-      "eslint --fix",
+    "*.js": [
+      "prettier-eslint src/**/*.js --write",
       "git add"
     ]
   },
@@ -43,6 +43,8 @@
     "husky": "^0.14.3",
     "lint-staged": "^7.2.0",
     "prettier": "^1.13.7",
+    "prettier-eslint": "^8.8.2",
+    "prettier-eslint-cli": "^4.7.1",
     "style-loader": "^0.21.0",
     "webpack": "^4.14.0",
     "webpack-cli": "^3.0.8",

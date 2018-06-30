@@ -20,7 +20,7 @@ class TodoController {
   async init() {
     const response = await Todo.getTodos();
     const data = await response.json();
-        for (let i = 0; i < data.length; i++) {
+    for (let i = 0; i < data.length; i++) {
       const todo = data[i];
       todoView.appendTodo(todo);
     }
