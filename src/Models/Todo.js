@@ -1,18 +1,18 @@
-(function (global) {
-    var Todo = function (todos) {
-        if (!(this instanceof Todo)) {
-            return new Todo();
-        }
-
+class Todo {
+    constructor(todos) {
         this.todos = todos || {}
         this.HOST_URL = 'https://json-now-ohjoczewvz.now.sh/'
     }
 
+    echo(){
+        console.log('echo')
+    }
+
     // todo一覧を取得
-    Todo.prototype.getTodos = function (callback) {
+    getTodos(callback) {
         $.ajax({
                 type: "GET",
-                url: this.HOST_URL+"todos"
+                url: this.HOST_URL + "todos"
             })
             .done((data) => {
                 this.todos = data
@@ -20,10 +20,10 @@
             }).fail((err) => {
                 alert('Todo一覧取得に失敗しました')
             })
-    }
+    };
 
     // todoを作成
-    Todo.prototype.createTodo = function (task, callback) {
+    createTodo(task, callback) {
         $.ajax({
                 type: "POST",
                 url: this.HOST_URL + "todos",
@@ -41,7 +41,7 @@
     }
 
     // todoの更新
-    Todo.prototype.updateTodo = function (id, task, isChecked) {
+    updateTodo(id, task, isChecked) {
         $.ajax({
                 type: "PUT",
                 url: this.HOST_URL + "todos/" + id,
@@ -54,7 +54,8 @@
                 alert('更新に失敗しました')
             })
     }
+}
 
-    global.todo.model = new Todo()
+const todo = new Todo()
 
-}(window || global));
+export default todo
