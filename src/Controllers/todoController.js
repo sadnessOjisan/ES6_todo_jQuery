@@ -1,4 +1,4 @@
-import todo from '../Models/Todo'
+import Todo from '../Models/Todo'
 import todoView from '../Views/todo'
 
 class TodoController {
@@ -20,14 +20,19 @@ class TodoController {
         console.log('echo')
     }
 
-    init() {
-        todo.getTodos(this._addDataToView)
+    async init() {
+        const response = await Todo.getTodos()
+        const data = await response.json()
+        for (let i = 0; i < data.length; i++) {
+            let todo = data[i]
+            todoView.appendTodo(todo)
+        }
         todoView.toggleFilter()
     }
 
     createTodo(task) {
         console.log('fire', task)
-        todo.createTodo(task, this._addDataToView)
+        Todo.createTodo(task, this._addDataToView)
     }
 
     updateTodo(e, shouldUpdateTodo) {
@@ -36,7 +41,7 @@ class TodoController {
         const task = shouldUpdateTodo.task
         todoView.updateTodo()
         todoView.filterTodo(id, isChecked)
-        todo.updateTodo(id, task, isChecked)
+        Todo.updateTodo(id, task, isChecked)
     }
 
     _addDataToView(data) {

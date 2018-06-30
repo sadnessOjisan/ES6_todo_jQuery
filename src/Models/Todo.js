@@ -3,23 +3,12 @@ class Todo {
         this.todos = todos || {}
         this.HOST_URL = 'https://json-now-ohjoczewvz.now.sh/'
     }
-
-    echo(){
-        console.log('echo')
-    }
-
     // todo一覧を取得
-    getTodos(callback) {
-        $.ajax({
-                type: "GET",
-                url: this.HOST_URL + "todos"
-            })
-            .done((data) => {
-                this.todos = data
-                callback(data)
-            }).fail((err) => {
-                alert('Todo一覧取得に失敗しました')
-            })
+    getTodos() {
+        const response = fetch(this.HOST_URL + "todos", {
+            type: "GET"
+        })
+        return response
     };
 
     // todoを作成
