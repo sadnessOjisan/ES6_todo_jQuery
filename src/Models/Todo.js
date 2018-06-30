@@ -6,42 +6,39 @@ class Todo {
     // todo一覧を取得
     getTodos() {
         const response = fetch(this.HOST_URL + "todos", {
-            type: "GET"
+            method: "GET"
         })
         return response
     };
 
     // todoを作成
-    createTodo(task, callback) {
-        $.ajax({
-                type: "POST",
-                url: this.HOST_URL + "todos",
-                data: {
-                    'task': task,
-                    isDone: false
-                }
-            })
-            .done((data) => {
-                this.todos = data
-                callback(data)
-            }).fail((err) => {
-                alert('Todo作成に失敗しました')
-            })
+    createTodo(task) {
+        const response = fetch(this.HOST_URL + "todos", {
+            method: "POST",
+            body: JSON.stringify({
+                'task': task,
+                isDone: false
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        return response
     }
 
     // todoの更新
     updateTodo(id, task, isChecked) {
-        $.ajax({
-                type: "PUT",
-                url: this.HOST_URL + "todos/" + id,
-                data: {
-                    task: task,
-                    isDone: isChecked ? true : false
-                }
-            })
-            .done((data) => {}).fail(function () {
-                alert('更新に失敗しました')
-            })
+        const response = fetch(this.HOST_URL + "todos/" + id, {
+            method: "PUT",
+            body: JSON.stringify({
+                task: task,
+                isDone: isChecked
+            }),
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        return response
     }
 }
 

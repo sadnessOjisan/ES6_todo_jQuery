@@ -1,13 +1,8 @@
 import todoController from '../Controllers/todoController'
 
 class TodoView {
-
-    echo(){
-        console.log('echo')
-    }
-
     appendTodo(todo) {
-        var isDone = todo.isDone === "false" ? false : true
+        var isDone = todo.isDone
         if (isDone) {
             $('#todos-area').append('<p class="checked"><input checked type="checkbox" class="todo-check" id=' + todo.id + ' /><span>' + todo.task + '</span></p>')
         } else {

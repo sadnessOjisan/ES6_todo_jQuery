@@ -16,10 +16,6 @@ class TodoController {
         })
     }
 
-    echo() {
-        console.log('echo')
-    }
-
     async init() {
         const response = await Todo.getTodos()
         const data = await response.json()
@@ -30,9 +26,10 @@ class TodoController {
         todoView.toggleFilter()
     }
 
-    createTodo(task) {
-        console.log('fire', task)
-        Todo.createTodo(task, this._addDataToView)
+    async createTodo(task) {
+        const response = await Todo.createTodo(task)
+        const data = await response.json()
+        todoView.appendTodo(data)
     }
 
     updateTodo(e, shouldUpdateTodo) {
@@ -42,17 +39,6 @@ class TodoController {
         todoView.updateTodo()
         todoView.filterTodo(id, isChecked)
         Todo.updateTodo(id, task, isChecked)
-    }
-
-    _addDataToView(data) {
-        if (data instanceof Array) {
-            for (var i = 0; i < data.length; i++) {
-                var todo = data[i]
-                todoView.appendTodo(todo)
-            }
-        } else {
-            todoView.appendTodo(data)
-        }
     }
 }
 
