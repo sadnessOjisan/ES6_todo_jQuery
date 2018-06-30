@@ -1,0 +1,19 @@
+{
+  "name": "es6_todo_jquery",
+  "version": "1.0.0",
+  "description": "ES6の機能を体験し、環境構築を理解することが目的",
+  "main": "src/main.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sadnessOjisan/ES6_todo_jQuery.git"
+  },
+  "author": "john",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sadnessOjisan/ES6_todo_jQuery/issues"
+  },
+  "homepage": "https://github.com/sadnessOjisan/ES6_todo_jQuery#readme"
+}
