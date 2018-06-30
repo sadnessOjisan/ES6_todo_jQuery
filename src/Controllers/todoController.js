@@ -4,7 +4,7 @@ import todoView from '../Views/todo'
 class TodoController {
     constructor() {
         // formが送信されたらそれをtodoに付け加える処理
-        $('#submit-form').submit(function (event) {
+        $('#submit-form').submit((event) => {
             event.preventDefault();
             var todo = $('#submit-form [name=todo]').val();
             this.createTodo(todo)
@@ -21,12 +21,13 @@ class TodoController {
     }
 
     init() {
-        todo.getTodos(_addDataToView)
+        todo.getTodos(this._addDataToView)
         todoView.toggleFilter()
     }
 
-    createTodo(todo) {
-        todo.createTodo(todo, _addDataToView)
+    createTodo(task) {
+        console.log('fire', task)
+        todo.createTodo(task, this._addDataToView)
     }
 
     updateTodo(e, shouldUpdateTodo) {
