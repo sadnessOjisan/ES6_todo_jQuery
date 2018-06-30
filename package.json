@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/sadnessOjisan/ES6_todo_jQuery/issues"
   },
-  "homepage": "https://github.com/sadnessOjisan/ES6_todo_jQuery#readme"
+  "homepage": "https://github.com/sadnessOjisan/ES6_todo_jQuery#readme",
+  "devDependencies": {
+    "webpack": "^4.14.0",
+    "webpack-cli": "^3.0.8"
+  }
 }
