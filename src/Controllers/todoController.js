@@ -1,4 +1,5 @@
 import todo from '../Models/Todo'
+import todoView from '../Views/todo'
 
 class TodoController {
     constructor() {
@@ -6,12 +7,12 @@ class TodoController {
         $('#submit-form').submit(function (event) {
             event.preventDefault();
             var todo = $('#submit-form [name=todo]').val();
-            global.todo.controller.createTodo(todo)
+            this.createTodo(todo)
         });
 
         // todoを表示を切り替えのフィルターのトグル処理
         $('#filter-btn').on('click', function () {
-            global.todo.view.toggleFilter()
+            todoView.toggleFilter()
         })
     }
 
@@ -21,7 +22,7 @@ class TodoController {
 
     init() {
         todo.getTodos(_addDataToView)
-        global.todo.view.toggleFilter()
+        todoView.toggleFilter()
     }
 
     createTodo(todo) {
@@ -32,8 +33,8 @@ class TodoController {
         const id = e.target.id
         const isChecked = $(e.target).is(':checked')
         const task = shouldUpdateTodo.task
-        global.todo.view.updateTodo()
-        global.todo.view.filterTodo(id, isChecked)
+        todoView.updateTodo()
+        todoView.filterTodo(id, isChecked)
         todo.updateTodo(id, task, isChecked)
     }
 
@@ -41,10 +42,10 @@ class TodoController {
         if (data instanceof Array) {
             for (var i = 0; i < data.length; i++) {
                 var todo = data[i]
-                global.todo.view.appendTodo(todo)
+                todoView.appendTodo(todo)
             }
         } else {
-            global.todo.view.appendTodo(data)
+            todoView.appendTodo(data)
         }
     }
 }

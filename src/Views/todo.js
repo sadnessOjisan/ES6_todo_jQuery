@@ -1,13 +1,13 @@
-(function (global) {
-    var TodoView = function () {
-        if (!(this instanceof TodoView)) {
-            return new TodoView();
-        }
+import todoController from '../Controllers/todoController'
+
+class TodoView {
+
+    echo(){
+        console.log('echo')
     }
 
-    // todoの追加処理
-    TodoView.prototype.appendTodo = function (todo) {
-        var isDone = todo.isDone === "false"? false:true
+    appendTodo(todo) {
+        var isDone = todo.isDone === "false" ? false : true
         if (isDone) {
             $('#todos-area').append('<p class="checked"><input checked type="checkbox" class="todo-check" id=' + todo.id + ' /><span>' + todo.task + '</span></p>')
         } else {
@@ -17,13 +17,12 @@
         $('.todo-check').on('click', function (e) {
             var clickedPoint = e.target
             if (clickedPoint.id == todo.id) {
-                global.todo.controller.updateTodo(e, todo)
+                todoController.updateTodo(e, todo)
             }
         })
     }
-    
-    // todoのfilter処理
-    TodoView.prototype.filterTodo = function(id, isChecked){
+
+    filterTodo(id, isChecked) {
         var todoDom = $("#" + id).parent()
         if (isChecked) {
             todoDom.addClass("checked")
@@ -34,13 +33,11 @@
         }
     }
 
-    // todoの更新処理
-    TodoView.prototype.updateTodo = function(){
+    updateTodo() {
         $('#remain').text($('#todos-area input:checkbox').length - $('#todos-area input:checkbox:checked').length)
     }
 
-    // fiterのtoggle処理
-    TodoView.prototype.toggleFilter = function(){
+    toggleFilter() {
         var filterState = $('#filter-state').text()
         if (filterState === 'off') {
             $('#filter-state').text('on')
@@ -51,7 +48,8 @@
             $('#todos-area input:checkbox:checked').parent().removeClass('hide')
         }
     }
+}
 
-    global.todo.view = new TodoView()
+const todoView = new TodoView()
 
-}(window || global));
+export default todoView

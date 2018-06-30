@@ -33,7 +33,7 @@ class Todo {
                 }
             })
             .done((data) => {
-                global.todo.model.todos = data
+                this.todos = data
                 callback(data)
             }).fail((err) => {
                 alert('Todo作成に失敗しました')
