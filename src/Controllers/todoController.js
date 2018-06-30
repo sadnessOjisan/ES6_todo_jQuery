@@ -4,7 +4,7 @@ import todoView from '../Views/todo';
 class TodoController {
   constructor() {
     // formが送信されたらそれをtodoに付け加える処理
-    $('#submit-form').submit((event) => {
+    $('#submit-form').submit(event => {
       event.preventDefault();
       const todo = $('#submit-form [name=todo]').val();
       this.createTodo(todo);

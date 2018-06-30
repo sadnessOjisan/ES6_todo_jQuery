@@ -7,7 +7,7 @@ class Todo {
   // todo一覧を取得
   getTodos() {
     const response = fetch(`${this.HOST_URL}todos`, {
-      method: 'GET',
+      method: 'GET'
     });
     return response;
   }
@@ -18,11 +18,11 @@ class Todo {
       method: 'POST',
       body: JSON.stringify({
         task,
-        isDone: false,
+        isDone: false
       }),
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     });
     return response;
   }
@@ -33,11 +33,11 @@ class Todo {
       method: 'PUT',
       body: JSON.stringify({
         task,
-        isDone: isChecked,
+        isDone: isChecked
       }),
       headers: {
-        'content-type': 'application/json',
-      },
+        'content-type': 'application/json'
+      }
     });
     return response;
   }
