@@ -10,6 +10,18 @@ module.exports = {
     },
     module: {
         rules: [{
+                test: /\.css/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            url: false
+                        }
+                    },
+                ],
+            },
+            {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 use: {
@@ -25,16 +37,17 @@ module.exports = {
                     }
                 }]
             }
+
         ]
     },
     plugins: [
         new HtmlWebPackPlugin({
             template: "./src/index.html",
             filename: "index.html"
-        }), 
+        }),
         new webpack.ProvidePlugin({
             $: 'jquery',
             jQuery: 'jquery'
-          })
+        })
     ]
 };
