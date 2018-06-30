@@ -8,6 +8,10 @@ ES6の機能を体験し、環境構築を理解することが目的
 * babel
 * webpack
 * ESModule
+* 開発支援ツール
+  + prettiier
+  + eslint
+  + greenkeeper
 
 ## 環境
 ```{zsh}
