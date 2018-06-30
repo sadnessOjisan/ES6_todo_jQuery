@@ -1,0 +1,12 @@
+.unchecked{
+    color: black
+}
+
+.checked{
+    color: gray;
+    text-decoration: line-through;
+}
+
+.hide{
+    display: none;
+}
