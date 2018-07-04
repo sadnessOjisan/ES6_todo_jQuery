@@ -1,15 +1,16 @@
 class Todo {
   constructor(todos) {
-    this.todos = todos || {};
+    this.todos = todos || [];
     this.HOST_URL = 'https://json-now-ohjoczewvz.now.sh/';
   }
 
   // todo一覧を取得
-  getTodos() {
-    const response = fetch(`${this.HOST_URL}todos`, {
+  async getTodos() {
+    const response = await fetch(`${this.HOST_URL}todos`, {
       method: 'GET'
     });
-    return response;
+    const data = await response.json();
+    this.todos = data;
   }
 
   // todoを作成

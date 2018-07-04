@@ -18,12 +18,9 @@ class TodoController {
 
   // 初期化処理
   async init() {
-    const response = await Todo.getTodos();
-    const data = await response.json();
-    for (let i = 0; i < data.length; i++) {
-      const todo = data[i];
-      todoView.appendTodo(todo);
-    }
+    await Todo.getTodos();
+    const todos = Todo.todos;
+    todoView.renderTodo(todos);
     todoView.toggleFilter();
   }
 
