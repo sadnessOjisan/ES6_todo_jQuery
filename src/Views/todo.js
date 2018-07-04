@@ -29,6 +29,35 @@ class TodoView {
     });
   }
 
+  renderTodo(todos) {
+    for (const todo of todos) {
+      const isDone = todo.isDone;
+      if (isDone) {
+        $('#todos-area').append(
+          `<p class="checked"><input checked type="checkbox" class="todo-check" id=${
+            todo.id
+          } /><span>${todo.task}</span></p>`
+        );
+      } else {
+        $('#todos-area').append(
+          `<p class="unchecked"><input type="checkbox" class="todo-check" id=${
+            todo.id
+          } /><span>${todo.task}</span></p>`
+        );
+      }
+      $('#remain').text(
+        $('#todos-area input:checkbox').length -
+          $('#todos-area input:checkbox:checked').length
+      );
+      $('.todo-check').on('click', e => {
+        const clickedPoint = e.target;
+        if (clickedPoint.id == todo.id) {
+          todoController.updateTodo(e, todo);
+        }
+      });
+    }
+  }
+
   // チェックしてる・してないに合わせてデザインを変える
   filterTodo(id, isChecked) {
     const todoDom = $(`#${id}`).parent();
