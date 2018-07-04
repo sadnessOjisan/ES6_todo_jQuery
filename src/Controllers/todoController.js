@@ -26,9 +26,8 @@ class TodoController {
 
   // todo作成処理
   async createTodo(task) {
-    const response = await Todo.createTodo(task);
-    const data = await response.json();
-    todoView.appendTodo(data);
+    await Todo.createTodo(task);
+    todoView.renderTodo(Todo.todos);
   }
 
   // todo更新処理

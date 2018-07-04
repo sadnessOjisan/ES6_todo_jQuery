@@ -30,6 +30,7 @@ class TodoView {
   }
 
   renderTodo(todos) {
+    $('#todos-area').empty();
     for (const todo of todos) {
       const isDone = todo.isDone;
       if (isDone) {

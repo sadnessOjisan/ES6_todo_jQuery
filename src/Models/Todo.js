@@ -14,8 +14,8 @@ class Todo {
   }
 
   // todoを作成
-  createTodo(task) {
-    const response = fetch(`${this.HOST_URL}todos`, {
+  async createTodo(task) {
+    const response = await fetch(`${this.HOST_URL}todos`, {
       method: 'POST',
       body: JSON.stringify({
         task,
@@ -25,7 +25,8 @@ class Todo {
         'content-type': 'application/json'
       }
     });
-    return response;
+    const data = await response.json();
+    this.todos.push(data);
   }
 
   // todoの更新
