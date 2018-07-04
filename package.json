@@ -7,7 +7,7 @@
     "start": "webpack-dev-server --open",
     "build": "webpack",
     "prettier": "prettier ./src/**.js",
-    "lint": "eslint src/**.js --fix",
+    "lint": "eslint 'src/**/*.js' --fix",
     "precommit": "lint-staged"
   },
   "lint-staged": {
