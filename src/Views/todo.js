@@ -59,18 +59,6 @@ class TodoView {
     }
   }
 
-  // チェックしてる・してないに合わせてデザインを変える
-  filterTodo(id, isChecked) {
-    const todoDom = $(`#${id}`).parent();
-    if (isChecked) {
-      todoDom.addClass('checked');
-      todoDom.removeClass('unchecked');
-    } else {
-      todoDom.addClass('unchecked');
-      todoDom.removeClass('checked');
-    }
-  }
-
   // 残りtodo数を表示
   updateTodo() {
     $('#remain').text(

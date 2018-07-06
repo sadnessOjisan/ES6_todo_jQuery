@@ -21,5 +21,13 @@ v10.5.0
 
 ```
 
+## 起動
+```{zsh}
+$ npm install
+
+$ npm run start
+
+```
+
 ## 注意
 index.htmlにbuild.jsを書いてなくても勝手にinjectionしてくれる. 

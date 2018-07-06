@@ -30,8 +30,8 @@ class Todo {
   }
 
   // todoの更新
-  updateTodo(id, task, isChecked) {
-    const response = fetch(`${this.HOST_URL}todos/${id}`, {
+  async updateTodo(id, task, isChecked) {
+    const response = await fetch(`${this.HOST_URL}todos/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
         task,
@@ -41,7 +41,10 @@ class Todo {
         'content-type': 'application/json'
       }
     });
-    return response;
+    const data = await response.json();
+    console.log('isChecked', isChecked);
+    console.log(data.isDone);
+    this.todos.filter(todo => todo.id != data.id).push(data);
   }
 }
 

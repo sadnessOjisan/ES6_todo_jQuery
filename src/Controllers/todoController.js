@@ -31,13 +31,12 @@ class TodoController {
   }
 
   // todo更新処理
-  updateTodo(e, shouldUpdateTodo) {
+  async updateTodo(e, shouldUpdateTodo) {
     const id = e.target.id;
     const isChecked = $(e.target).is(':checked');
     const task = shouldUpdateTodo.task;
-    todoView.updateTodo();
-    todoView.filterTodo(id, isChecked);
-    Todo.updateTodo(id, task, isChecked);
+    await Todo.updateTodo(id, task, isChecked);
+    todoView.renderTodo(Todo.todos);
   }
 }
 
