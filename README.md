@@ -1,33 +1,46 @@
-# ES6_todo_jQuery
-ES6の機能を体験し、環境構築を理解することが目的
+# HELL_todo_jquery
 
-## 学べること
-* 文法(constなど)
-* Promise
-* AsyncAwait
-* babel
-* webpack
-* ESModule
-* 開発支援ツール
-  + prettiier
-  + eslint
-  + greenkeeper
+React ハンズオンの教材コード
+
+[HELL_todo_jquery](https://github.com/sadnessOjisan/HELL_todo_jquery)を `ES6` + `MVC` で書き直したもの.
+
+![preview](./preview.png)
 
 ## 環境
-```{zsh}
-# node version
-$ node -v
-v10.5.0
+
+サーバー: https://github.com/sadnessOjisan/JSON-Now
 
 ```
+$ git clone https://github.com/sadnessOjisan/JSON-Now.git
 
-## 起動
-```{zsh}
-$ npm install
+$ yarn install
 
-$ npm run start
-
+$ yarn run start
 ```
 
-## 注意
-index.htmlにbuild.jsを書いてなくても勝手にinjectionしてくれる. 
+起動
+
+```
+$ yarn install
+
+$ yarn run start
+```
+
+## 機能
+
+- todo をサーバーから取得し、表示する機能
+- todo をサーバーに投稿する機能
+- todo の達成をチェックする機能し、サーバーを更新する機能
+- 達成している todo の見栄えを変える機能
+- 残っている todo のみにフィルタリングをかける機能
+- 残り todo 数をカウントする機能
+
+## 技術スタック
+
+- ES6
+- jQuery
+- milligram
+- MVC
+- webpack
+- eslint
+- prettier
