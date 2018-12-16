@@ -1,4 +1,4 @@
-# HELL_todo_jquery
+# ES6_todo_jQuery
 
 React ハンズオンの教材コード
 
