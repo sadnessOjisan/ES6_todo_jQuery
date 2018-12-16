@@ -1,12 +1,16 @@
-.unchecked{
-    color: black
+.unchecked {
+  color: black;
 }
 
-.checked{
-    color: gray;
-    text-decoration: line-through;
+.checked {
+  color: gray;
+  text-decoration: line-through;
 }
 
-.hide{
-    display: none;
+.hide {
+  display: none;
+}
+
+body {
+  text-align: center;
 }

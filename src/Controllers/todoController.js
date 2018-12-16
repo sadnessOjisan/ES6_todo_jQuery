@@ -1,4 +1,4 @@
-import Todo from '../Models/Todo';
+import TodoManager from '../Models/Todo';
 import todoView from '../Views/todo';
 
 class TodoController {
@@ -12,22 +12,29 @@ class TodoController {
 
     // todoを表示を切り替えのフィルターのトグル処理
     $('#filter-btn').on('click', () => {
-      todoView.toggleFilter();
+      TodoManager.toggleFilter();
+      const todos = TodoManager.todos;
+      const isFiltered = TodoManager.isFiltered;
+      todoView.renderTodo(todos, isFiltered);
+      todoView.renderFilterState(isFiltered);
     });
   }
 
   // 初期化処理
   async init() {
-    await Todo.getTodos();
-    const todos = Todo.todos;
-    todoView.renderTodo(todos);
-    todoView.toggleFilter();
+    await TodoManager.getTodos();
+    const todos = TodoManager.todos;
+    const isFiltered = TodoManager.isFiltered;
+    todoView.renderTodo(todos, isFiltered);
+    todoView.updateTodo(todos);
+    todoView.renderFilterState(isFiltered);
   }
 
   // todo作成処理
   async createTodo(task) {
-    await Todo.createTodo(task);
-    todoView.renderTodo(Todo.todos);
+    await TodoManager.createTodo(task);
+    todoView.renderTodo(TodoManager.todos);
+    todoView.updateTodo(TodoManager.todos);
   }
 
   // todo更新処理
@@ -35,8 +42,9 @@ class TodoController {
     const id = e.target.id;
     const isChecked = $(e.target).is(':checked');
     const task = shouldUpdateTodo.task;
-    await Todo.updateTodo(id, task, isChecked);
-    todoView.renderTodo(Todo.todos);
+    await TodoManager.updateTodo(id, task, isChecked);
+    todoView.renderTodo(TodoManager.todos);
+    todoView.updateTodo(TodoManager.todos);
   }
 }
 

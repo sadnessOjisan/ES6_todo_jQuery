@@ -1,7 +1,12 @@
-class Todo {
+class TodoManager {
   constructor(todos) {
     this.todos = todos || [];
-    this.HOST_URL = 'https://json-now-ohjoczewvz.now.sh/';
+    this.isFiltered = false;
+    this.HOST_URL = 'http://localhost:3000/';
+  }
+
+  toggleFilter() {
+    this.isFiltered = !this.isFiltered;
   }
 
   // todo一覧を取得
@@ -34,6 +39,7 @@ class Todo {
     const response = await fetch(`${this.HOST_URL}todos/${id}`, {
       method: 'PUT',
       body: JSON.stringify({
+        id,
         task,
         isDone: isChecked
       }),
@@ -42,12 +48,10 @@ class Todo {
       }
     });
     const data = await response.json();
-    console.log('isChecked', isChecked);
-    console.log(data.isDone);
-    this.todos.filter(todo => todo.id != data.id).push(data);
+    this.todos = [...this.todos.filter(todo => todo.id !== data.id), data];
   }
 }
 
-const todo = new Todo();
+const todoManager = new TodoManager();
 
-export default todo;
+export default todoManager;
